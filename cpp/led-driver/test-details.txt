@@ -1,0 +1,24 @@
+/**************  requirements ******************/ 
+
+Make the driver testable off the target hardware 
+It will control 16 two state LEDs
+It can turn on or off any individual LEDs without affecting others 
+Should have an interface to reply back the state of any LED 
+At power on , All LEDs should be turned off 
+LEDs are memory mapped to a 16-bit word 
+Logic 1 turns ON . Logic 0 turns OFF
+The least significant bit corresponds to LED1 
+The most  significant bit corresponds to LED16
+
+/**************  Test Cases ******************/ 
+
+All Leds are off after the driver is initialized 
+A single LED can be turned On 
+A single LED can be turned Off 
+Multiple LEDs can be turned on/off 
+turn on all LEDs
+turn off all LEDs
+Query LED state
+Check Boundary Values
+Check out of bound values 
+
