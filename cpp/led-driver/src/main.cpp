@@ -101,11 +101,25 @@ TEST(LedDriver, TurnOnLedOne){
   //arrange
   uint16_t ledStatus;
   //act
-  ledDriver_create(&ledStatus); //will create and read led status data
+  //ledDriver_create(&ledStatus); //will create and read led status data
   ledDriver_turnOn(1);
   //assert
   EXPECT_EQ(1, ledStatus);      
 }
+
+TEST(LedDriver, TurnOffLedOne){
+  //setup
+  uint16_t ledStatus;
+  //exercise
+  //ledDriver_create(&ledStatus); //will create and read led status data
+  ledDriver_turnOn(1);
+  ledDriver_turnOff(1);
+  //verify
+  EXPECT_EQ(0, ledStatus);
+  //cleanup
+}
+
+
 
 int main(int argc, char** argv) {
   // The following line must be executed to initialize Google Mock

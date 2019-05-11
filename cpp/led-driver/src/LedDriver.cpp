@@ -16,3 +16,8 @@ void ledDriver_turnOn(int ledNumber)
 {
 	*bkctledStatus_all = 1;
 }
+
+void ledDriver_turnOff(int ledNumber)
+{
+	*bkctledStatus_all = 0;
+}
