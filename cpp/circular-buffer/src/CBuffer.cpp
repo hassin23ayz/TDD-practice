@@ -1,6 +1,9 @@
 #include "CBuffer.h"
 
-uint8_t buff[4];
+
+#define BUFF_SIZE 4
+
+uint8_t buff[BUFF_SIZE];
 uint8_t pushIndex = 0;
 uint8_t popIndex = 0;
 
@@ -19,16 +22,20 @@ bool isEmpty(void)
 		{return false;}
 }
 
+bool isFull(void)
+{
+	if(pushIndex == BUFF_SIZE)
+		{return true;}
+	else
+		{return false;}
+}
+
 void put(int v)
 {
-	if((v >= 0) && (v <= 255))
+	if(isFull() != true)
 	{
-		buff[pushIndex] = v;
-		pushIndex++;
-		if(pushIndex == 4){
-			pushIndex = 0;
-		}		
-	} 
+		buff[pushIndex++] = v;
+	}
 }
 
 int get(void)
@@ -36,12 +43,18 @@ int get(void)
 	if(isEmpty()){
 		return -1;
 	}
-	if(popIndex == 4){
-		popIndex = 0;
+	if((popIndex == (BUFF_SIZE-1)) && (isFull() == true))
+	{
+		uint8_t v = buff[popIndex];
+		clear();
+		return v;
 	}
-    if(popIndex == pushIndex)
-    {
-    	return -1;
-    }
-	return buff[popIndex++];
+	else if(popIndex < pushIndex)
+	{
+		return buff[popIndex++];
+	}
+	else
+	{
+		return -1;
+	}
 }

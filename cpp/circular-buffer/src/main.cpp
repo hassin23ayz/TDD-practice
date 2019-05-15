@@ -157,7 +157,7 @@ TEST(CircularBuffer, putMultipleElementsWithOverflow)
   int secondValue = get();
   int thirdValue = get();
   //verify
-  EXPECT_EQ(firstValue, 'e');
+  EXPECT_EQ(firstValue, 'a');
   EXPECT_EQ(secondValue, 'b');
   EXPECT_EQ(thirdValue, 'c');
   //cleanup
@@ -212,20 +212,7 @@ TEST(CircularBuffer, putMultipleReadMixed)
   //verify
   EXPECT_EQ(thirdValue, 'c');
   EXPECT_EQ(fourthValue, 'd');
-  EXPECT_EQ(fifthValue, 'e');
-  //cleanup
-  clear();
-}
-
-TEST(CircularBuffer, putMinusOne)
-{
-  //setup
-  clear();
-  //exercise
-  put(-1);
-  int firstValue = get();
-  //verify
-  EXPECT_EQ(firstValue, -1);
+  EXPECT_EQ(fifthValue, -1);
   //cleanup
   clear();
 }
@@ -246,7 +233,7 @@ TEST(CircularBuffer, putMinusOneInBetween)
   //verify
   EXPECT_EQ(firstValue, 'a');
   EXPECT_EQ(secondValue, 'b');
-  EXPECT_EQ(thirdValue, 'c');
+  EXPECT_EQ(thirdValue, 255);
   //cleanup
   clear();  
 }
