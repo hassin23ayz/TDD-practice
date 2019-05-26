@@ -4,19 +4,19 @@
 #define BUFF_SIZE 4
 
 uint8_t buff[BUFF_SIZE];
-uint8_t pushIndex = 0;
-uint8_t popIndex = 0;
+uint8_t inIndex = 0;
+uint8_t outIndex = 0;
 
 
 void clear(void)
 {
-	pushIndex = 0;
-	popIndex = 0;
+	inIndex = 0;
+	outIndex = 0;
 }
 
 bool isEmpty(void)
 {
-	if((pushIndex == 0) && (popIndex == 0))
+	if(inIndex == outIndex)
 		{return true;}
 	else 
 		{return false;}
@@ -24,17 +24,29 @@ bool isEmpty(void)
 
 bool isFull(void)
 {
-	if(pushIndex == BUFF_SIZE)
+	if(((inIndex - outIndex) == 4) || (inIndex < outIndex))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+
+/*
+	if(inIndex == BUFF_SIZE)
 		{return true;}
 	else
 		{return false;}
+*/
 }
 
 void put(int v)
 {
 	if(isFull() != true)
 	{
-		buff[pushIndex++] = v;
+		if(inIndex == 4){inIndex = 0;}
+		buff[inIndex++] = v;
 	}
 }
 
@@ -43,18 +55,7 @@ int get(void)
 	if(isEmpty()){
 		return -1;
 	}
-	if((popIndex == (BUFF_SIZE-1)) && (isFull() == true))
-	{
-		uint8_t v = buff[popIndex];
-		clear();
-		return v;
-	}
-	else if(popIndex < pushIndex)
-	{
-		return buff[popIndex++];
-	}
-	else
-	{
-		return -1;
-	}
+
+	return buff[outIndex++];
+
 }

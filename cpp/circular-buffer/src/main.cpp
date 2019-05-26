@@ -212,7 +212,7 @@ TEST(CircularBuffer, putMultipleReadMixed)
   //verify
   EXPECT_EQ(thirdValue, 'c');
   EXPECT_EQ(fourthValue, 'd');
-  EXPECT_EQ(fifthValue, -1);
+  EXPECT_EQ(fifthValue, 'e');
   //cleanup
   clear();
 }
