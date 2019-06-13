@@ -1,0 +1,21 @@
+/**************  requirements ******************/ 
+
+The buffer will be 4 in size 
+uint8_t type data can be put into the buffer 
+uint8_t type data can be get from the buffer
+The buffer should be FIFO in nature 
+The buffer should be fixed sized 
+User should know if buffer is empty
+User should have the option to clear the buffer
+
+
+/**************  Test Cases ******************/ 
+
+clearing the buffer isEmpty should return true
+Without putting anything isEmpty should return true. 
+Without putting anything read will return -1 
+Put ‘a’ in the buffer and read will return ‘a’ 
+Put ‘a’, ‘b’, ‘c’ in the buffer and read will return ‘a’
+  
+
+
