@@ -6,11 +6,16 @@ this file is the Test Runner
 TDD is followed as top down approach 
 */
 
-#include <iostream>
+#define UNIT_TESTING
 
+#ifdef UNIT_TESTING
+
+#include <iostream>
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>  // Brings in Google Mock.
 #include <arduino-mock/Arduino.h>
+
+#include "../arduino-mock-sample.ino"
 
 using namespace std;
 using ::testing::AtLeast;
@@ -31,6 +36,12 @@ TEST(delay, normal) {
   releaseArduinoMock();
 }
 
+TEST(sketch,setup) {
+  ArduinoMock* arduinoMock = arduinoMockInstance();
+  EXPECT_CALL(*arduinoMock, pinMode(13, OUTPUT));
+  setup();
+  releaseArduinoMock();
+}
 
 int main(int argc, char** argv) {
   // The following line must be executed to initialize Google Mock
@@ -38,3 +49,5 @@ int main(int argc, char** argv) {
   ::testing::InitGoogleMock(&argc, argv);
   return RUN_ALL_TESTS();
 }
+
+#endif
