@@ -9,6 +9,7 @@ set(CMAKE_CXX_FLAGS "-Wall -std=c++11 -pthread")
  
 #Bring the headers
 include_directories(include)
+include_directories(include/arduino-mock)
 
 #if multiple files
 file(GLOB SOURCES "src/*.cpp")
