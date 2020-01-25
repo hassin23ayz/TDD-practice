@@ -1,0 +1,11 @@
+---
+"/var/lib/gems/2.5.0/gems/ceedling-0.29.1/vendor/unity/src/unity.c":
+- TEST
+- UNITY_INT_WIDTH=16
+- UNITY_LONG_WIDTH=32
+- UNITY_EXCLUDE_FLOAT
+src/fizzbuzz.c:
+- TEST
+- UNITY_INT_WIDTH=16
+- UNITY_LONG_WIDTH=32
+- UNITY_EXCLUDE_FLOAT
