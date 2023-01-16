@@ -3,7 +3,7 @@
 #include <iostream>
 
 #include <gtest/gtest.h>
-#include "gmock/gmock.h"  // Brings in Google Mock.
+#include <gmock/gmock.h>  // Brings in Google Mock.
 
 using namespace std;
 using ::testing::AtLeast;
