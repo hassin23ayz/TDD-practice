@@ -6,7 +6,9 @@ set ( PROJECT_LINK_LIBS libgtest.a libgmock.a libgmock_main.a libgtest_main.a )
 link_directories( /usr/lib )
 
 set(CMAKE_CXX_FLAGS "-Wall -std=c++11 -pthread")
- 
+
+include_directories(/usr/src/gmock/include)
+
 add_executable(gmock-example-test main.cpp)
 target_link_libraries(gmock-example-test ${PROJECT_LINK_LIBS} )
 
